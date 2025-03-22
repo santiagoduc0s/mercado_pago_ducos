@@ -1,0 +1,40 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "mercado_pago_flowlabs",
+      "request": "launch",
+      "type": "dart",
+      "cwd": "example",
+      "args": [
+        "--dart-define-from-file",
+        "env.json"
+      ]
+    },
+    {
+      "name": "mercado_pago_flowlabs (profile mode)",
+      "request": "launch",
+      "type": "dart",
+      "cwd": "example",
+      "args": [
+        "--dart-define-from-file",
+        "env.json"
+      ],
+      "flutterMode": "profile"
+    },
+    {
+      "name": "mercado_pago_flowlabs (release mode)",
+      "request": "launch",
+      "type": "dart",
+      "cwd": "example",
+      "args": [
+        "--dart-define-from-file",
+        "env.json"
+      ],
+      "flutterMode": "release"
+    }
+  ]
+}
