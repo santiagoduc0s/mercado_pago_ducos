@@ -1,9 +1,11 @@
 export 'address.dart';
+export 'auto_recurring.dart';
 export 'back_urls.dart';
 export 'differential_pricing.dart';
 export 'excluded_payment_method.dart';
 export 'excluded_payment_type.dart';
 export 'free_method.dart';
+export 'free_trial.dart';
 export 'identification.dart';
 export 'item.dart';
 export 'payer.dart';

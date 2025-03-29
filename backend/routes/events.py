@@ -18,9 +18,26 @@ def events():
         return {'message': 'Signature verification failed'}, 400
 
     data = request.json or {}
+    log_data(data, 'data')
+
+    type_transaction = request.args.get("type", "")
+    log_data(type_transaction, 'type_transaction')
+
     action = data.get("action")
 
-    if action == "payment.created":
+    # Subscriptions
+    if type_transaction == "subscription_preapproval":
+        payment_id = data["data"]["id"]
+        preapproval = sdk.preapproval().get(payment_id)
+        log_data(preapproval, 'preapproval')
+
+        if preapproval['status'] == "authorized":
+            external_reference = payment_data.get("external_reference", "")
+            log_data(external_reference, 'external_reference')
+            return {'message': 'Subscription approved!'}
+
+    # Preferences
+    if type_transaction == "payment":
         payment_id = data["data"]["id"]
         log_data(payment_id, 'payment_id')
 
@@ -30,12 +47,12 @@ def events():
         
         if status == "approved":
             metadata = payment_data.get("metadata", {})
-            external_reference = payment_data.get("external_reference", "")
-
-            log_data(external_reference, 'external_reference')
             order_id = metadata.get("order_id", "")
-
             log_data(order_id, 'order_id')
+
+            external_reference = payment_data.get("external_reference", "")
+            log_data(external_reference, 'external_reference')
+
             return {'message': 'Payment approved!'}
 
     return {'message': 'OK'}

@@ -1,4 +1,4 @@
-import 'package:mercado_pago_flowlabs/models/models.dart'
+import 'package:mercado_pago_flowlabs/src/models/models.dart'
     show ExcludedPaymentMethod, ExcludedPaymentType;
 
 class PaymentMethods {

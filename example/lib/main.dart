@@ -1,4 +1,7 @@
+import 'package:dio/dio.dart';
+import 'package:example/env.dart';
 import 'package:flutter/material.dart';
+import 'package:mercado_pago_flowlabs/mercado_pago_flowlabs.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void main() {
@@ -16,8 +19,124 @@ class MainApp extends StatelessWidget {
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  late final PreferenceRepository repoPreference;
+  late final SubscriptionRepository repoSubscription;
+
+  @override
+  void initState() {
+    super.initState();
+
+    final dio = Dio(
+      BaseOptions(
+        baseUrl: Env.baseUrlBackend,
+      ),
+    );
+
+    final provider = DioHttpProvider(
+      dio: dio,
+    );
+
+    final client = HttpClient(provider: provider);
+
+    final ds = PreferenceApiDatasource(
+      client: client,
+    );
+
+    repoPreference = PreferenceRepository(
+      datasource: ds,
+    );
+
+    final dsSubscription = SubscriptionApiDatasource(
+      client: client,
+    );
+
+    repoSubscription = SubscriptionRepository(
+      datasource: dsSubscription,
+    );
+  }
+
+  Future<void> createPreference() async {
+    final response = await repoPreference.createPreference(
+      CreatePreferenceRequestBody(
+        items: [
+          Item(
+            id: '1234',
+            title: 'Test',
+            quantity: 1,
+            unitPrice: 20,
+          ),
+        ],
+        externalReference: 'or-1234',
+        metadata: {
+          'order_id': 'or-1234',
+        },
+      ),
+    );
+
+    launchUrl(
+      Uri.parse(response.initPoint),
+      mode: LaunchMode.externalApplication,
+    );
+  }
+
+  Future<void> searchPreferences() async {
+    final response = await repoPreference.searchPreferences(
+      SearchPreferencesRequestBody(),
+    );
+
+    print(response.total);
+  }
+
+  Future<void> getPreference() async {
+    final response = await repoPreference.getPreference(
+      GetPreferenceRequestBody(
+        id: "2347358770-4398e34b-c80c-4d26-8156-3a0b1d4e7e3e",
+      ),
+    );
+
+    print(response.id);
+  }
+
+  Future<void> updatePreference() async {
+    final response = await repoPreference.updatePreference(
+      UpdatePreferenceRequestBody(
+        id: "2347358770-4398e34b-c80c-4d26-8156-3a0b1d4e7e3e",
+        externalReference: 'or-1234-update',
+      ),
+    );
+
+    print(response.id);
+  }
+
+  Future<void> createSubscription() async {
+    final response = await repoSubscription.createSubscription(
+      CreateSubscriptionRequestBody(
+        reason: 'Subscription without associated plan',
+        autoRecurring: AutoRecurring(
+          frequency: 1,
+          frequencyType: 'months',
+          transactionAmount: 20.5,
+          currencyId: 'UYU',
+        ),
+        payerEmail: 'test_user_1747582417@testuser.com',
+        externalReference: 'or-1234',
+        backUrl: 'https://www.google.com',
+      ),
+    );
+
+    launchUrl(
+      Uri.parse(response.initPoint),
+      mode: LaunchMode.externalApplication,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +144,16 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Home')),
       body: Center(
         child: ElevatedButton(
-          child: const Text("Open WebView Bottom Sheet"),
-          onPressed: () {
-            launchUrl(
-              Uri.parse(
-                'https://sandbox.mercadopago.com.uy/checkout/v1/redirect?pref_id=2347358770-250fcb36-c15f-4dc6-aedc-487fedf55f32',
-              ),
-              mode: LaunchMode.externalApplication,
-            );
+          child: const Text("Run"),
+          onPressed: () async {
+            /// --- Preferences
+            // createPreference();
+            // searchPreferences();
+            // getPreference();
+            // updatePreference();
+
+            /// --- Subscriptions
+            createSubscription();
           },
         ),
       ),

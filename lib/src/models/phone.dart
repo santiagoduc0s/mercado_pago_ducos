@@ -3,7 +3,7 @@ class Phone {
   final String? areaCode;
 
   /// Number.
-  final int? number;
+  final String? number;
 
   Phone({
     this.areaCode,

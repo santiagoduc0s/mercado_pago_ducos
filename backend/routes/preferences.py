@@ -14,3 +14,15 @@ def search_preferences():
     data = request.json or {}
     response = sdk.preference().search(data)
     return response["response"], response["status"]
+
+@preferences_bp.route("/get-preference", methods=["GET"])
+def get_preference():
+    data = request.json or {}
+    response = sdk.preference().get(data["id"])
+    return response["response"], response["status"]
+
+@preferences_bp.route("/update-preference", methods=["PUT"])
+def update_preference():
+    data = request.json or {}
+    response = sdk.preference().update(data["id"], data)
+    return response["response"], response["status"]
