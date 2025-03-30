@@ -8,3 +8,9 @@ def create_subscription():
     data = request.json or {}
     response = sdk.preapproval().create(data)
     return response["response"], response["status"]
+
+@subscriptions_bp.route("/search-subscriptions", methods=["GET"])
+def search_subscriptions():
+    data = request.json or {}
+    response = sdk.preapproval().search(data)
+    return response["response"], response["status"]

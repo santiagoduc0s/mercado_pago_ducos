@@ -36,6 +36,9 @@ def events():
             log_data(external_reference, 'external_reference')
             return {'message': 'Subscription approved!'}
 
+        if preapproval['status'] == "cancelled":
+            return {'message': 'Subscription cancelled!'}
+
     # Preferences
     if type_transaction == "payment":
         payment_id = data["data"]["id"]

@@ -14,4 +14,10 @@ class SubscriptionRepository {
   ) {
     return datasource.createSubscription(request);
   }
+
+  Future<SearchSubscriptionsResponseBody> searchSubscriptions(
+    SearchSubscriptionsRequestBody request,
+  ) {
+    return datasource.searchSubscriptions(request);
+  }
 }

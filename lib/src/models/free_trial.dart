@@ -19,4 +19,12 @@ class FreeTrial {
       frequencyType: json['frequency_type'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'frequency': frequency,
+      'frequency_type': frequencyType,
+    }..removeWhere((key, value) => value == null);
+  }
+
 }

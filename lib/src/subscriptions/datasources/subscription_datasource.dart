@@ -5,4 +5,8 @@ abstract class SubscriptionDatasource {
   Future<CreateSubscriptionResponseBody> createSubscription(
     CreateSubscriptionRequestBody body,
   );
+
+  Future<SearchSubscriptionsResponseBody> searchSubscriptions(
+    SearchSubscriptionsRequestBody body,
+  );
 }

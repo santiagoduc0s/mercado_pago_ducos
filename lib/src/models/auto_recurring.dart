@@ -1,3 +1,5 @@
+import 'package:mercado_pago_flowlabs/src/models/models.dart';
+
 /// Configuration data for recurring payments.
 class AutoRecurring {
   /// Frequency value that, along with [frequencyType], defines the invoice cycle.
@@ -18,6 +20,9 @@ class AutoRecurring {
   /// Amount to charge on each invoice.
   final num transactionAmount;
 
+  /// Free trial data.
+  final FreeTrial? freeTrial;
+
   /// Creates an instance of [AutoRecurring].
   AutoRecurring({
     required this.frequency,
@@ -26,6 +31,7 @@ class AutoRecurring {
     this.endDate,
     required this.currencyId,
     required this.transactionAmount,
+    this.freeTrial,
   });
 
   /// Creates an [AutoRecurring] instance from a JSON map.
@@ -37,6 +43,9 @@ class AutoRecurring {
       endDate: json['end_date'],
       currencyId: json['currency_id'],
       transactionAmount: json['transaction_amount'],
+      freeTrial: json['free_trial'] != null
+          ? FreeTrial.fromJson(json['free_trial'])
+          : null,
     );
   }
 
@@ -51,6 +60,7 @@ class AutoRecurring {
       'end_date': endDate,
       'currency_id': currencyId,
       'transaction_amount': transactionAmount,
+      'free_trial': freeTrial?.toJson(),
     }..removeWhere((key, value) => value == null);
   }
 }

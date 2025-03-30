@@ -138,6 +138,14 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  Future<void> searchSubscriptions() async {
+    final response = await repoSubscription.searchSubscriptions(
+      SearchSubscriptionsRequestBody(),
+    );
+
+    print(response.results.length);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -153,7 +161,8 @@ class _HomeScreenState extends State<HomeScreen> {
             // updatePreference();
 
             /// --- Subscriptions
-            createSubscription();
+            // createSubscription();
+            // searchSubscriptions();
           },
         ),
       ),

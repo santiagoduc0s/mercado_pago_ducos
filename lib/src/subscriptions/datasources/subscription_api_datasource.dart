@@ -28,4 +28,23 @@ class SubscriptionApiDatasource implements SubscriptionDatasource {
 
     return CreateSubscriptionResponseBody.fromJson(response.data);
   }
+
+  @override
+    Future<SearchSubscriptionsResponseBody> searchSubscriptions(
+    SearchSubscriptionsRequestBody body,
+  ) async {
+    final req = RequestHttp(
+      path: '/subscriptions/search-subscriptions',
+      method: HttpMethod.get,
+      data: body,
+    );
+
+    final response = await client.fetch(req);
+
+    if (response.isNotOk) {
+      throw Exception(response.data);
+    }
+
+    return SearchSubscriptionsResponseBody.fromJson(response.data);
+  }
 }
