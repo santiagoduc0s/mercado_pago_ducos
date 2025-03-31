@@ -6,10 +6,13 @@ class FreeTrial {
   /// Frequency type, e.g. "days" or "months".
   final String frequencyType;
 
+  final int? firstInvoiceOffset;
+
   /// Creates an instance of [FreeTrial].
   FreeTrial({
     required this.frequency,
     required this.frequencyType,
+    this.firstInvoiceOffset,
   });
 
   /// Creates a [FreeTrial] instance from a JSON map.
@@ -17,6 +20,7 @@ class FreeTrial {
     return FreeTrial(
       frequency: json['frequency'],
       frequencyType: json['frequency_type'],
+      firstInvoiceOffset: json['first_invoice_offset'],
     );
   }
 
@@ -24,7 +28,7 @@ class FreeTrial {
     return {
       'frequency': frequency,
       'frequency_type': frequencyType,
+      'first_invoice_offset': firstInvoiceOffset,
     }..removeWhere((key, value) => value == null);
   }
-
 }

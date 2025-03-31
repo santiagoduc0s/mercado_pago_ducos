@@ -9,4 +9,9 @@ abstract class SubscriptionDatasource {
   Future<SearchSubscriptionsResponseBody> searchSubscriptions(
     SearchSubscriptionsRequestBody body,
   );
+
+  Future<GetSubscriptionResponseBody> getSubscription(
+    GetSubscriptionRequestBody body,
+  );
+
 }

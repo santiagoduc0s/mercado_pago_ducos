@@ -8,6 +8,12 @@ class AutoRecurring {
   /// Frequency type, e.g. "days" or "months".
   final String frequencyType;
 
+  final int? repetitions;
+
+  final int? billingDay;
+
+  final bool? billingDayProportional;
+
   /// Date from which the subscription will be active.
   final String? startDate;
 
@@ -27,6 +33,9 @@ class AutoRecurring {
   AutoRecurring({
     required this.frequency,
     required this.frequencyType,
+    this.repetitions,
+    this.billingDay,
+    this.billingDayProportional,
     this.startDate,
     this.endDate,
     required this.currencyId,
@@ -39,6 +48,9 @@ class AutoRecurring {
     return AutoRecurring(
       frequency: json['frequency'],
       frequencyType: json['frequency_type'],
+      repetitions: json['repetitions'],
+      billingDay: json['billing_day'],
+      billingDayProportional: json['billing_day_proportional'],
       startDate: json['start_date'],
       endDate: json['end_date'],
       currencyId: json['currency_id'],
@@ -56,6 +68,9 @@ class AutoRecurring {
     return {
       'frequency': frequency,
       'frequency_type': frequencyType,
+      'repetitions': repetitions,
+      'billing_day': billingDay,
+      'billing_day_proportional': billingDayProportional,
       'start_date': startDate,
       'end_date': endDate,
       'currency_id': currencyId,

@@ -13,3 +13,15 @@ https://www.youtube.com/watch?v=FujS16J74Gk&ab_channel=DeeecodeTheWeb
 # To open the checkout
 url_launcher
 ```
+
+### Create your plans
+
+https://www.mercadopago.com.uy/subscription-plans/list
+
+### Example subscriptions
+
+https://www.youtube.com/watch?v=s-vb-uu6C0k&ab_channel=Goncy
+
+### Example preferences
+
+https://www.youtube.com/watch?v=BUHUW7tAr_Y&t=1154s&ab_channel=Goncy

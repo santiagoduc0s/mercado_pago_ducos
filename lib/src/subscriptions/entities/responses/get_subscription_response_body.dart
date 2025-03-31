@@ -2,26 +2,21 @@ import 'package:mercado_pago_flowlabs/src/core/client/client.dart'
     show ResponseBody;
 import 'package:mercado_pago_flowlabs/src/models/models.dart';
 
-/// Response payload for searching subscriptions (preapprovals).
-///
-/// The response includes:
-/// - [paging]: An object containing pagination details (offset, limit, total).
-/// - [results]: An array of subscription items. This will be empty if there are no results.
-class SearchSubscriptionsResponseBody implements ResponseBody {
+class GetSubscriptionResponseBody implements ResponseBody {
   /// Pagination details: offset, limit, and total number of items.
   final Paging paging;
 
   /// The page of subscription items.
   final List<Subscription> results;
 
-  SearchSubscriptionsResponseBody({
+  GetSubscriptionResponseBody({
     required this.paging,
     required this.results,
   });
 
   /// Creates an instance from a JSON object.
-  factory SearchSubscriptionsResponseBody.fromJson(Map<String, dynamic> json) {
-    return SearchSubscriptionsResponseBody(
+  factory GetSubscriptionResponseBody.fromJson(Map<String, dynamic> json) {
+    return GetSubscriptionResponseBody(
       paging: Paging.fromJson(json['paging']),
       results: (json['results'] as List)
           .map((item) => Subscription.fromJson(item))

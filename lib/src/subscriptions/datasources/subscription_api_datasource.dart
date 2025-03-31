@@ -30,7 +30,7 @@ class SubscriptionApiDatasource implements SubscriptionDatasource {
   }
 
   @override
-    Future<SearchSubscriptionsResponseBody> searchSubscriptions(
+  Future<SearchSubscriptionsResponseBody> searchSubscriptions(
     SearchSubscriptionsRequestBody body,
   ) async {
     final req = RequestHttp(
@@ -46,5 +46,24 @@ class SubscriptionApiDatasource implements SubscriptionDatasource {
     }
 
     return SearchSubscriptionsResponseBody.fromJson(response.data);
+  }
+
+  @override
+  Future<GetSubscriptionResponseBody> getSubscription(
+    GetSubscriptionRequestBody body,
+  ) async {
+    final req = RequestHttp(
+      path: '/subscriptions/search-subscriptions',
+      method: HttpMethod.get,
+      data: body,
+    );
+
+    final response = await client.fetch(req);
+
+    if (response.isNotOk) {
+      throw Exception(response.data);
+    }
+
+    return GetSubscriptionResponseBody.fromJson(response.data);
   }
 }
