@@ -1,32 +1,36 @@
 import 'package:mercado_pago_ducos/src/models/models.dart'
     show ExcludedPaymentMethod, ExcludedPaymentType;
 
+/// Model for configuring payment method preferences.
+///
+/// This class allows you to exclude specific payment methods or types,
+/// suggest a default payment method, and specify installment preferences.
 class PaymentMethods {
-  /// Payment methods excluded from the payment process (except
-  /// account_money and wallet, which is always allowed). The
-  /// payment methods included here will not be available at checkout.
+  /// Payment methods to be excluded from the checkout process.
+  ///
+  /// Note: 'account_money' and 'wallet' are always allowed.
   final List<ExcludedPaymentMethod>? excludedPaymentMethods;
 
-  /// Payment types excluded from the payment process. The payment
-  /// types included here will not be available at checkout.
+  /// Payment types to be excluded from the checkout process.
   final List<ExcludedPaymentType>? excludedPaymentTypes;
 
-  /// Suggested payment method. The user will initiate the checkout
-  /// this this payment method already selected. It is considered
-  /// suggested because Checkouts follow different logics in order
-  /// to select the best payment method for a specific transaction,
-  /// and this property is the option with the least relevance.
+  /// Suggested default payment method.
+  ///
+  /// This value pre-selects a payment method during checkout.
   /// Example: "amex"
   final String? defaultPaymentMethodId;
 
-  /// Maximum number of credit card installments to be accepted.
+  /// Maximum number of credit card installments accepted.
+  ///
   /// Example: 6
   final int? installments;
 
-  /// Preferred number of credit card installments.
+  /// Preferred (default) number of credit card installments.
+  ///
   /// Example: 3
   final int? defaultInstallments;
 
+  /// Creates an instance of [PaymentMethods] with the given parameters.
   PaymentMethods({
     this.excludedPaymentMethods,
     this.excludedPaymentTypes,
@@ -35,13 +39,23 @@ class PaymentMethods {
     this.defaultInstallments,
   });
 
+  /// Creates a [PaymentMethods] instance from a JSON map.
+  ///
+  /// The JSON map should include keys corresponding to the properties:
+  /// - 'excluded_payment_methods': List of payment methods to exclude.
+  /// - 'excluded_payment_types': List of payment types to exclude.
+  /// - 'default_payment_method_id': Suggested default payment method.
+  /// - 'installments': Maximum installments allowed.
+  /// - 'default_installments': Preferred number of installments.
   factory PaymentMethods.fromJson(Map<String, dynamic> json) {
     return PaymentMethods(
+      // Map each JSON entry to an ExcludedPaymentMethod instance.
       excludedPaymentMethods: json['excluded_payment_methods'] != null
           ? (json['excluded_payment_methods'] as List)
               .map((e) => ExcludedPaymentMethod.fromJson(e))
               .toList()
           : null,
+      // Map each JSON entry to an ExcludedPaymentType instance.
       excludedPaymentTypes: json['excluded_payment_types'] != null
           ? (json['excluded_payment_types'] as List)
               .map((e) => ExcludedPaymentType.fromJson(e))
@@ -53,6 +67,15 @@ class PaymentMethods {
     );
   }
 
+  /// Converts the [PaymentMethods] instance into a JSON map.
+  ///
+  /// The returned map includes:
+  /// - 'excluded_payment_methods' as a list of JSON maps.
+  /// - 'excluded_payment_types' as a list of JSON maps.
+  /// - 'default_payment_method_id', 'installments', and 'default_installments'.
+  ///
+  /// **Note:** Non-null assertions (`!`) are used for list properties,
+  /// so ensure these properties are not null when calling [toJson].
   Map<String, dynamic> toJson() {
     return {
       "excluded_payment_methods":

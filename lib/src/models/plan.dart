@@ -1,6 +1,10 @@
 import 'package:mercado_pago_ducos/src/models/models.dart';
 
 /// Model representing a subscription plan.
+///
+/// This class encapsulates the details for a subscription plan including its
+/// unique identifiers, recurrence configuration, payment methods, URLs, dates,
+/// subscription count, and status.
 class Plan {
   /// Unique identifier for the subscription plan.
   final String id;
@@ -50,6 +54,7 @@ class Plan {
   /// Current status of the plan (e.g., active, cancelled).
   final String status;
 
+  /// Creates an instance of [Plan] with the given properties.
   Plan({
     required this.id,
     required this.applicationId,
@@ -69,23 +74,32 @@ class Plan {
     required this.status,
   });
 
-  /// Creates an instance from a JSON map.
+  /// Creates an instance of [Plan] from a JSON map.
+  ///
+  /// The JSON map should include keys corresponding to each property of the plan.
+  /// It maps nested objects (such as [AutoRecurring], [PaymentMethodsAllowed], and
+  /// [PaymentMethod]) to their corresponding instances.
   factory Plan.fromJson(Map<String, dynamic> json) {
     return Plan(
       id: json['id'],
       applicationId: json['application_id'],
       collectorId: json['collector_id'],
       reason: json['reason'],
+      // Parse the auto recurring configuration from JSON.
       autoRecurring: AutoRecurring.fromJson(
           json['auto_recurring'] as Map<String, dynamic>),
       transactionAmount: json['transaction_amount'],
       currencyId: json['currency_id'],
+      // Parse allowed payment methods if provided.
       paymentMethodsAllowed: json['payment_methods_allowed'] != null
           ? PaymentMethodsAllowed.fromJson(
               json['payment_methods_allowed'] as Map<String, dynamic>)
           : null,
+      // Parse the list of payment methods. If present, convert each item from JSON.
       paymentMethods: json['payment_methods']
-          ?.map((item) => PaymentMethod.fromJson(item as Map<String, dynamic>)),
+          // Using the null-aware operator to avoid errors if key is absent.
+          ?.map((item) => PaymentMethod.fromJson(item as Map<String, dynamic>))
+          .toList(),
       backUrl: json['back_url'],
       externalReference: json['external_reference'],
       initPoint: json['init_point'],
@@ -96,7 +110,10 @@ class Plan {
     );
   }
 
-  /// Converts the plan instance into a JSON map.
+  /// Converts the [Plan] instance into a JSON map.
+  ///
+  /// The resulting map includes keys for each property of the plan.
+  /// Nested objects are converted using their own [toJson] methods.
   Map<String, dynamic> toJson() {
     return {
       'id': id,
