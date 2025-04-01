@@ -20,3 +20,9 @@ def get_subscription():
     data = request.json or {}
     response = sdk.preapproval().get(data["id"])
     return response["response"], response["status"]
+
+@subscriptions_bp.route("/update-subscription", methods=["PUT"])
+def update_subscription():
+    data = request.json or {}
+    response = sdk.preapproval().update(data["id"], data)
+    return response["response"], response["status"]

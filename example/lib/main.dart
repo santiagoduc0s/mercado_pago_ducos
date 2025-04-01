@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:example/env.dart';
 import 'package:flutter/material.dart';
-import 'package:mercado_pago_flowlabs/mercado_pago_flowlabs.dart';
+import 'package:mercado_pago_ducos/mercado_pago_ducos.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void main() {
@@ -140,7 +140,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> searchSubscriptions() async {
     final response = await repoSubscription.searchSubscriptions(
-      SearchSubscriptionsRequestBody(),
+      SearchSubscriptionsRequestBody(
+        // offset: 50,
+        limit: 50,
+      ),
     );
 
     print(response.results.length);
@@ -154,6 +157,17 @@ class _HomeScreenState extends State<HomeScreen> {
     );
 
     print(response.results.first);
+  }
+
+  Future<void> updateSubscription() async {
+    final response = await repoSubscription.updateSubscription(
+      UpdateSubscriptionRequestBody(
+        id: '14d8136fcfd64211af49e7c516ef639e',
+        status: "authorized",
+      ),
+    );
+
+    print(response.id);
   }
 
   @override
@@ -174,6 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
             // createSubscription();
             // searchSubscriptions();
             // getSubscription();
+            // updateSubscription();
           },
         ),
       ),

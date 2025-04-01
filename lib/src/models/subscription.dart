@@ -1,4 +1,4 @@
-import 'package:mercado_pago_flowlabs/src/models/models.dart'
+import 'package:mercado_pago_ducos/src/models/models.dart'
     show AutoRecurring, Summarized;
 
 /// Represents a single subscription (preapproval) item.

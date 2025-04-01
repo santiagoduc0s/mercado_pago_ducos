@@ -1,4 +1,4 @@
-import 'package:mercado_pago_flowlabs/src/models/models.dart';
+import 'package:mercado_pago_ducos/src/models/models.dart';
 
 /// Configuration data for recurring payments.
 class AutoRecurring {

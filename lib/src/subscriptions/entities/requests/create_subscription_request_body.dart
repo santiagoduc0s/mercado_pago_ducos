@@ -1,6 +1,6 @@
-import 'package:mercado_pago_flowlabs/src/core/client/client.dart'
+import 'package:mercado_pago_ducos/src/core/client/client.dart'
     show RequestBody;
-import 'package:mercado_pago_flowlabs/src/models/models.dart'
+import 'package:mercado_pago_ducos/src/models/models.dart'
     show AutoRecurring;
 
 /// Request payload for creating a subscription.

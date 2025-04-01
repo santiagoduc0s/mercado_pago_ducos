@@ -6,7 +6,7 @@ import 'package:mercado_pago_ducos/src/models/models.dart'
 /// Response wrapper for creating a subscription.
 ///
 /// For more information, please refer to the Mercado Pago documentation.
-class CreateSubscriptionResponseBody implements ResponseBody {
+class UpdateSubscriptionResponseBody implements ResponseBody {
   /// Unique subscription identifier.
   final String id;
 
@@ -48,7 +48,7 @@ class CreateSubscriptionResponseBody implements ResponseBody {
   final int? cardId;
 
   /// Payment method configured.
-  final int? paymentMethodId;
+  final String? paymentMethodId;
 
   /// Date of the next payment debit.
   final String nextPaymentDate;
@@ -62,8 +62,8 @@ class CreateSubscriptionResponseBody implements ResponseBody {
   /// Subscription status: "pending" (without payment method) or "authorized" (with a payment method).
   final String status;
 
-  /// Creates an instance of [CreateSubscriptionResponseBody].
-  CreateSubscriptionResponseBody({
+  /// Creates an instance of [UpdateSubscriptionResponseBody].
+  UpdateSubscriptionResponseBody({
     required this.id,
     this.version,
     required this.applicationId,
@@ -84,9 +84,9 @@ class CreateSubscriptionResponseBody implements ResponseBody {
     required this.status,
   });
 
-  /// Creates a [CreateSubscriptionResponseBody] from a JSON map.
-  factory CreateSubscriptionResponseBody.fromJson(Map<String, dynamic> json) {
-    return CreateSubscriptionResponseBody(
+  /// Creates a [UpdateSubscriptionResponseBody] from a JSON map.
+  factory UpdateSubscriptionResponseBody.fromJson(Map<String, dynamic> json) {
+    return UpdateSubscriptionResponseBody(
       id: json['id'],
       version: json['version'],
       applicationId: json['application_id'],

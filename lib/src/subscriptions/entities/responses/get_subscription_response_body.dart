@@ -1,6 +1,6 @@
-import 'package:mercado_pago_flowlabs/src/core/client/client.dart'
+import 'package:mercado_pago_ducos/src/core/client/client.dart'
     show ResponseBody;
-import 'package:mercado_pago_flowlabs/src/models/models.dart';
+import 'package:mercado_pago_ducos/src/models/models.dart';
 
 class GetSubscriptionResponseBody implements ResponseBody {
   /// Pagination details: offset, limit, and total number of items.

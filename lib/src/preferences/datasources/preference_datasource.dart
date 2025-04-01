@@ -1,4 +1,4 @@
-import 'package:mercado_pago_flowlabs/src/preferences/entities/entities.dart';
+import 'package:mercado_pago_ducos/src/preferences/entities/entities.dart';
 
 abstract class PreferenceDatasource {
   Future<CreatePreferenceResponseBody> createPreference(

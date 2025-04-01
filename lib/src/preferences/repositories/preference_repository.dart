@@ -1,5 +1,5 @@
-import 'package:mercado_pago_flowlabs/src/preferences/datasources/datasources.dart';
-import 'package:mercado_pago_flowlabs/src/preferences/entities/entities.dart';
+import 'package:mercado_pago_ducos/src/preferences/datasources/datasources.dart';
+import 'package:mercado_pago_ducos/src/preferences/entities/entities.dart';
 
 class PreferenceRepository {
   PreferenceRepository({

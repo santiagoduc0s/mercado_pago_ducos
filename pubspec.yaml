@@ -1,5 +1,5 @@
-name: mercado_pago_flowlabs
-description: "Mercado Pago implementation"
+name: mercado_pago_ducos
+description: "Mercado Pago implementation with SDK"
 version: 0.0.1
 
 environment:
@@ -10,8 +10,6 @@ dependencies:
   dio: ^5.8.0+1
   flutter:
     sdk: flutter
-  logger: ^2.5.0
-  url_launcher: ^6.3.1
 
 dev_dependencies:
   flutter_test:

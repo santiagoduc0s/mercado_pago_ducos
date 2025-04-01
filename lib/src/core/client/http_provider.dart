@@ -1,5 +1,5 @@
-import 'package:mercado_pago_flowlabs/src/core/client/request_http.dart';
-import 'package:mercado_pago_flowlabs/src/core/client/response_http.dart';
+import 'package:mercado_pago_ducos/src/core/client/request_http.dart';
+import 'package:mercado_pago_ducos/src/core/client/response_http.dart';
 
 /// An abstract class that defines the contract for an HTTP provider.
 ///

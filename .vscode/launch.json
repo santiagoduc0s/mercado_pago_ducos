@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "mercado_pago_flowlabs",
+      "name": "mercado_pago_ducos",
       "request": "launch",
       "type": "dart",
       "cwd": "example",
@@ -15,7 +15,7 @@
       ]
     },
     {
-      "name": "mercado_pago_flowlabs (profile mode)",
+      "name": "mercado_pago_ducos (profile mode)",
       "request": "launch",
       "type": "dart",
       "cwd": "example",
@@ -26,7 +26,7 @@
       "flutterMode": "profile"
     },
     {
-      "name": "mercado_pago_flowlabs (release mode)",
+      "name": "mercado_pago_ducos (release mode)",
       "request": "launch",
       "type": "dart",
       "cwd": "example",

@@ -10,8 +10,9 @@ dependencies:
   dio: ^5.8.0+1
   flutter:
     sdk: flutter
-  mercado_pago_flowlabs:
+  mercado_pago_ducos:
     path: ../
+  url_launcher: ^6.3.1
 
 dev_dependencies:
   flutter_test:

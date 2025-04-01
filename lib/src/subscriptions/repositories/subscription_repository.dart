@@ -1,7 +1,7 @@
-import 'package:mercado_pago_flowlabs/src/subscriptions/datasources/datasources.dart'
+import 'package:mercado_pago_ducos/src/subscriptions/datasources/datasources.dart'
     show SubscriptionDatasource;
-import 'package:mercado_pago_flowlabs/src/subscriptions/entities/requests/requests.dart';
-import 'package:mercado_pago_flowlabs/src/subscriptions/entities/responses/responses.dart';
+import 'package:mercado_pago_ducos/src/subscriptions/entities/requests/requests.dart';
+import 'package:mercado_pago_ducos/src/subscriptions/entities/responses/responses.dart';
 
 class SubscriptionRepository {
   SubscriptionRepository({
@@ -26,5 +26,11 @@ class SubscriptionRepository {
     GetSubscriptionRequestBody request,
   ) {
     return datasource.getSubscription(request);
+  }
+
+  Future<UpdateSubscriptionResponseBody> updateSubscription(
+    UpdateSubscriptionRequestBody request,
+  ) {
+    return datasource.updateSubscription(request);
   }
 }

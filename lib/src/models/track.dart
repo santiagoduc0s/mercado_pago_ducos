@@ -1,4 +1,4 @@
-import 'package:mercado_pago_flowlabs/src/models/models.dart' show TrackValues;
+import 'package:mercado_pago_ducos/src/models/models.dart' show TrackValues;
 
 class Track {
   /// Track type. Specifies which tool the values belong to.
