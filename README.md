@@ -1,6 +1,21 @@
 # Mercado Pago Ducos
 
-This implementation use the server side implementation, that means I use a backend to consume the 
+Reference SDK: https://www.mercadopago.com.ar/developers/en/reference
+
+This implementation use the server side implementation, that means I use a backend to consume the services. Check the example in the ```backend``` and ```example``` folder.
+
+Services:
+- Preferences
+  - createPreference();
+  - searchPreferences();
+  - getPreference();
+  - updatePreference();
+
+- Subscriptions
+  - createSubscription();
+  - searchSubscriptions();
+  - getSubscription();
+  - updateSubscription();
 
 ### Expose port to internet using vscode
 
