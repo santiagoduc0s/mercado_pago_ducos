@@ -1,16 +1,14 @@
-import 'package:mercado_pago_ducos/src/core/client/client.dart'
-    show ResponseBody;
-import 'package:mercado_pago_ducos/src/models/models.dart'
-    show AutoRecurring, FreeTrial;
+import 'package:mercado_pago_ducos/src/core/client/client.dart' show ResponseBody;
+import 'package:mercado_pago_ducos/src/models/models.dart' show AutoRecurring, FreeTrial;
 
-/// Response wrapper for creating a subscription.
+/// Response wrapper for updating a subscription.
 ///
 /// For more information, please refer to the Mercado Pago documentation.
 class UpdateSubscriptionResponseBody implements ResponseBody {
   /// Unique subscription identifier.
   final String id;
 
-  /// How many times the subscription was modified.
+  /// Number of times the subscription was modified.
   final int? version;
 
   /// Unique ID that identifies your application/integration.
@@ -23,16 +21,16 @@ class UpdateSubscriptionResponseBody implements ResponseBody {
   final String? preapprovalPlanId;
 
   /// Short description shown during checkout and in notifications.
-  /// Only required for subscriptions without a plan.
+  /// This field is only required for subscriptions without a plan.
   final String? reason;
 
-  /// Reference to sync with your system.
+  /// External reference used to synchronize with your system.
   final String externalReference;
 
   /// Successful return URL.
   final String backUrl;
 
-  /// URL to checkout to add or modify payment method.
+  /// URL to checkout for adding or modifying the payment method.
   final String initPoint;
 
   /// Configuration data for recurrence.
@@ -59,10 +57,12 @@ class UpdateSubscriptionResponseBody implements ResponseBody {
   /// Date of the last modification.
   final String lastModified;
 
-  /// Subscription status: "pending" (without payment method) or "authorized" (with a payment method).
+  /// Subscription status:
+  /// - "pending": Subscription without a payment method.
+  /// - "authorized": Subscription with a valid payment method.
   final String status;
 
-  /// Creates an instance of [UpdateSubscriptionResponseBody].
+  /// Creates an instance of [UpdateSubscriptionResponseBody] with the provided values.
   UpdateSubscriptionResponseBody({
     required this.id,
     this.version,
@@ -84,7 +84,10 @@ class UpdateSubscriptionResponseBody implements ResponseBody {
     required this.status,
   });
 
-  /// Creates a [UpdateSubscriptionResponseBody] from a JSON map.
+  /// Creates an instance of [UpdateSubscriptionResponseBody] from a JSON map.
+  ///
+  /// The [json] parameter must include keys corresponding to all the fields of this class.
+  /// This factory constructor parses the JSON map and maps its values to the respective fields.
   factory UpdateSubscriptionResponseBody.fromJson(Map<String, dynamic> json) {
     return UpdateSubscriptionResponseBody(
       id: json['id'],
@@ -97,9 +100,7 @@ class UpdateSubscriptionResponseBody implements ResponseBody {
       backUrl: json['back_url'],
       initPoint: json['init_point'],
       autoRecurring: AutoRecurring.fromJson(json['auto_recurring']),
-      freeTrial: json['free_trial'] != null
-          ? FreeTrial.fromJson(json['free_trial'])
-          : null,
+      freeTrial: json['free_trial'] != null ? FreeTrial.fromJson(json['free_trial']) : null,
       payerId: json['payer_id'],
       cardId: json['card_id'],
       paymentMethodId: json['payment_method_id'],

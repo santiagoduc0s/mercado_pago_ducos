@@ -26,7 +26,7 @@ class CreateSubscriptionResponseBody implements ResponseBody {
   /// Only required for subscriptions without a plan.
   final String? reason;
 
-  /// Reference to sync with your system.
+  /// External reference to synchronize with your system.
   final String externalReference;
 
   /// Successful return URL.
@@ -62,7 +62,7 @@ class CreateSubscriptionResponseBody implements ResponseBody {
   /// Subscription status: "pending" (without payment method) or "authorized" (with a payment method).
   final String status;
 
-  /// Creates an instance of [CreateSubscriptionResponseBody].
+  /// Creates an instance of [CreateSubscriptionResponseBody] with the provided values.
   CreateSubscriptionResponseBody({
     required this.id,
     this.version,
@@ -85,6 +85,10 @@ class CreateSubscriptionResponseBody implements ResponseBody {
   });
 
   /// Creates a [CreateSubscriptionResponseBody] from a JSON map.
+  ///
+  /// The [json] parameter must contain all necessary keys corresponding to the
+  /// fields of this class. This factory constructor parses the JSON and maps
+  /// its values to the respective fields.
   factory CreateSubscriptionResponseBody.fromJson(Map<String, dynamic> json) {
     return CreateSubscriptionResponseBody(
       id: json['id'],
@@ -96,7 +100,9 @@ class CreateSubscriptionResponseBody implements ResponseBody {
       externalReference: json['external_reference'],
       backUrl: json['back_url'],
       initPoint: json['init_point'],
+      // Parse the auto recurring configuration using its fromJson method.
       autoRecurring: AutoRecurring.fromJson(json['auto_recurring']),
+      // Parse freeTrial if it exists, otherwise leave it null.
       freeTrial: json['free_trial'] != null
           ? FreeTrial.fromJson(json['free_trial'])
           : null,
