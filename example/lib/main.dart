@@ -27,8 +27,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late final PreferenceRepository repoPreference;
-  late final SubscriptionRepository repoSubscription;
+  late final MercadoPago mercadoPago;
 
   @override
   void initState() {
@@ -46,26 +45,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
     final client = HttpClient(provider: provider);
 
-    final ds = PreferenceApiDatasource(
-      client: client,
-    );
-
-    repoPreference = PreferenceRepository(
-      datasource: ds,
-    );
-
-    final dsSubscription = SubscriptionApiDatasource(
-      client: client,
-    );
-
-    repoSubscription = SubscriptionRepository(
-      datasource: dsSubscription,
-    );
+    mercadoPago = MercadoPago(client: client);
   }
 
   Future<void> createPreference() async {
-    final response = await repoPreference.createPreference(
-      CreatePreferenceRequestBody(
+    final response = await mercadoPago.createPreference(
+      body: CreatePreferenceRequestBody(
         items: [
           Item(
             id: '1234',
@@ -88,16 +73,16 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> searchPreferences() async {
-    final response = await repoPreference.searchPreferences(
-      SearchPreferencesRequestBody(),
+    final response = await mercadoPago.searchPreferences(
+      body: SearchPreferencesRequestBody(),
     );
 
     print(response.total);
   }
 
   Future<void> getPreference() async {
-    final response = await repoPreference.getPreference(
-      GetPreferenceRequestBody(
+    final response = await mercadoPago.getPreference(
+      body: GetPreferenceRequestBody(
         id: "2347358770-4398e34b-c80c-4d26-8156-3a0b1d4e7e3e",
       ),
     );
@@ -106,8 +91,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> updatePreference() async {
-    final response = await repoPreference.updatePreference(
-      UpdatePreferenceRequestBody(
+    final response = await mercadoPago.updatePreference(
+      body: UpdatePreferenceRequestBody(
         id: "2347358770-4398e34b-c80c-4d26-8156-3a0b1d4e7e3e",
         externalReference: 'or-1234-update',
       ),
@@ -117,8 +102,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> createSubscription() async {
-    final response = await repoSubscription.createSubscription(
-      CreateSubscriptionRequestBody(
+    final response = await mercadoPago.createSubscription(
+      body: CreateSubscriptionRequestBody(
         reason: 'Subscription without associated plan',
         autoRecurring: AutoRecurring(
           frequency: 1,
@@ -139,8 +124,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> searchSubscriptions() async {
-    final response = await repoSubscription.searchSubscriptions(
-      SearchSubscriptionsRequestBody(
+    final response = await mercadoPago.searchSubscriptions(
+      body: SearchSubscriptionsRequestBody(
         // offset: 50,
         limit: 50,
       ),
@@ -150,8 +135,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> getSubscription() async {
-    final response = await repoSubscription.getSubscription(
-      GetSubscriptionRequestBody(
+    final response = await mercadoPago.getSubscription(
+      body: GetSubscriptionRequestBody(
         id: 'edbf308821c34869a2e38406ff0edcd1',
       ),
     );
@@ -160,8 +145,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> updateSubscription() async {
-    final response = await repoSubscription.updateSubscription(
-      UpdateSubscriptionRequestBody(
+    final response = await mercadoPago.updateSubscription(
+      body: UpdateSubscriptionRequestBody(
         id: '14d8136fcfd64211af49e7c516ef639e',
         status: "authorized",
       ),
