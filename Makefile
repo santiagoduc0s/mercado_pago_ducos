@@ -1,5 +1,4 @@
 lint:
-	dart fix --apply
-	dart format .
-	flutter analyze
-
+	fvm dart fix --apply
+	fvm dart format .
+	fvm flutter analyze

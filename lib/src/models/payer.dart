@@ -56,7 +56,8 @@ class Payer {
           ? Identification.fromJson(json['identification'])
           : null,
       // Parse address data if available.
-      address: json['address'] != null ? Address.fromJson(json['address']) : null,
+      address:
+          json['address'] != null ? Address.fromJson(json['address']) : null,
       dateCreated: json['date_created'],
     );
   }

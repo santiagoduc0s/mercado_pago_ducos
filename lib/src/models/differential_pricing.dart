@@ -26,6 +26,7 @@ class DifferentialPricing {
   Map<String, dynamic> toJson() {
     return {
       "id": id,
-    }..removeWhere((key, value) => value == null); // Clean up the JSON by removing null values.
+    }..removeWhere((key, value) =>
+        value == null); // Clean up the JSON by removing null values.
   }
 }

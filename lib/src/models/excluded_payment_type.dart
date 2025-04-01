@@ -27,6 +27,7 @@ class ExcludedPaymentType {
   Map<String, dynamic> toJson() {
     return {
       "id": id,
-    }..removeWhere((key, value) => value == null); // Clean up JSON by removing null entries.
+    }..removeWhere((key, value) =>
+        value == null); // Clean up JSON by removing null entries.
   }
 }

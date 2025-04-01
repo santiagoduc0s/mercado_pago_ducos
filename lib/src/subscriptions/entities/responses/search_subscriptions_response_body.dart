@@ -1,4 +1,5 @@
-import 'package:mercado_pago_ducos/src/core/client/client.dart' show ResponseBody;
+import 'package:mercado_pago_ducos/src/core/client/client.dart'
+    show ResponseBody;
 import 'package:mercado_pago_ducos/src/models/models.dart';
 
 /// Response payload for searching subscriptions (preapprovals).

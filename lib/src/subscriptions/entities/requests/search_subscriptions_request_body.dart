@@ -1,4 +1,5 @@
-import 'package:mercado_pago_ducos/src/core/client/client.dart' show RequestBody;
+import 'package:mercado_pago_ducos/src/core/client/client.dart'
+    show RequestBody;
 
 /// Represents the request payload for searching subscriptions.
 ///

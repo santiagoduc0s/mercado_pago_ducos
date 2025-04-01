@@ -1,5 +1,7 @@
-import 'package:mercado_pago_ducos/src/core/client/client.dart' show ResponseBody;
-import 'package:mercado_pago_ducos/src/models/models.dart' show AutoRecurring, FreeTrial;
+import 'package:mercado_pago_ducos/src/core/client/client.dart'
+    show ResponseBody;
+import 'package:mercado_pago_ducos/src/models/models.dart'
+    show AutoRecurring, FreeTrial;
 
 /// Response wrapper for updating a subscription.
 ///
@@ -100,7 +102,9 @@ class UpdateSubscriptionResponseBody implements ResponseBody {
       backUrl: json['back_url'],
       initPoint: json['init_point'],
       autoRecurring: AutoRecurring.fromJson(json['auto_recurring']),
-      freeTrial: json['free_trial'] != null ? FreeTrial.fromJson(json['free_trial']) : null,
+      freeTrial: json['free_trial'] != null
+          ? FreeTrial.fromJson(json['free_trial'])
+          : null,
       payerId: json['payer_id'],
       cardId: json['card_id'],
       paymentMethodId: json['payment_method_id'],

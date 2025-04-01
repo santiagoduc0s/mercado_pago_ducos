@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:example/env.dart';
 import 'package:flutter/material.dart';
@@ -77,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SearchPreferencesRequestBody(),
     );
 
-    print(response.total);
+    log(response.total.toString());
   }
 
   Future<void> getPreference() async {
@@ -87,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
 
-    print(response.id);
+    log(response.id);
   }
 
   Future<void> updatePreference() async {
@@ -98,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
 
-    print(response.id);
+    log(response.id);
   }
 
   Future<void> createSubscription() async {
@@ -131,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
 
-    print(response.results.length);
+    log(response.results.length.toString());
   }
 
   Future<void> getSubscription() async {
@@ -141,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
 
-    print(response.results.first);
+    log(response.results.first.toString());
   }
 
   Future<void> updateSubscription() async {
@@ -152,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
 
-    print(response.id);
+    log(response.id);
   }
 
   @override

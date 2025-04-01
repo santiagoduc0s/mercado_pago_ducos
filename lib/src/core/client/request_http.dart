@@ -1,5 +1,4 @@
-import 'package:mercado_pago_ducos/src/core/client/client.dart'
-    show HttpMethod;
+import 'package:mercado_pago_ducos/src/core/client/client.dart' show HttpMethod;
 
 /// A generic class that represents an HTTP request.
 ///

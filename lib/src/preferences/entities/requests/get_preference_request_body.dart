@@ -1,4 +1,5 @@
-import 'package:mercado_pago_ducos/src/core/client/client.dart' show RequestBody;
+import 'package:mercado_pago_ducos/src/core/client/client.dart'
+    show RequestBody;
 
 /// Request payload for retrieving a payment preference.
 ///
@@ -9,10 +10,10 @@ class GetPreferenceRequestBody implements RequestBody {
   GetPreferenceRequestBody({
     required this.id,
   });
-  
+
   /// Preference ID.
   final String id;
-  
+
   /// Converts the [GetPreferenceRequestBody] instance into a JSON map.
   ///
   /// The resulting map includes the key 'id' mapped to the preference ID.

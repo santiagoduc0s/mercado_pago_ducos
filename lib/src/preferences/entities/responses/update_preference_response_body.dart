@@ -1,5 +1,6 @@
 import 'package:mercado_pago_ducos/src/models/models.dart';
-import 'package:mercado_pago_ducos/src/core/client/client.dart' show ResponseBody;
+import 'package:mercado_pago_ducos/src/core/client/client.dart'
+    show ResponseBody;
 
 /// Response wrapper for updating a payment preference.
 ///

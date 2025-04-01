@@ -51,6 +51,7 @@ class FreeTrial {
       'frequency': frequency,
       'frequency_type': frequencyType,
       'first_invoice_offset': firstInvoiceOffset,
-    }..removeWhere((key, value) => value == null); // Clean up the map by removing null entries.
+    }..removeWhere((key, value) =>
+        value == null); // Clean up the map by removing null entries.
   }
 }
