@@ -29,7 +29,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late final PreferenceRepository repoPreference;
   late final SubscriptionRepository repoSubscription;
-  late final PlanRepository repoPlan;
 
   @override
   void initState() {
@@ -61,14 +60,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
     repoSubscription = SubscriptionRepository(
       datasource: dsSubscription,
-    );
-
-    final dsPlan = PlanApiDatasource(
-      client: client,
-    );
-
-    repoPlan = PlanRepository(
-      datasource: dsPlan,
     );
   }
 
@@ -165,14 +156,6 @@ class _HomeScreenState extends State<HomeScreen> {
     print(response.results.first);
   }
 
-  Future<void> searchPlans() async {
-    final response = await repoPlan.searchPlans(
-      SearchPlansRequestBody(),
-    );
-
-    print(response.results.length);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -191,9 +174,6 @@ class _HomeScreenState extends State<HomeScreen> {
             // createSubscription();
             // searchSubscriptions();
             // getSubscription();
-
-            /// --- Plans
-            searchPlans();
           },
         ),
       ),
