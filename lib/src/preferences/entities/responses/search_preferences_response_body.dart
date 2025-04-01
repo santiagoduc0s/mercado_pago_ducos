@@ -1,5 +1,4 @@
-import 'package:mercado_pago_ducos/src/core/client/client.dart'
-    show ResponseBody;
+import 'package:mercado_pago_ducos/src/core/client/client.dart' show ResponseBody;
 
 /// Response payload for searching preferences.
 ///
@@ -15,6 +14,7 @@ class SearchPreferencesResponseBody implements ResponseBody {
   /// Total number of results.
   final int total;
 
+  /// Creates an instance of [SearchPreferencesResponseBody] with the provided values.
   SearchPreferencesResponseBody({
     required this.elements,
     required this.nextOffset,
@@ -22,6 +22,9 @@ class SearchPreferencesResponseBody implements ResponseBody {
   });
 
   /// Creates an instance from a JSON object.
+  ///
+  /// This factory constructor parses the JSON map and maps its values to the
+  /// corresponding fields.
   @override
   factory SearchPreferencesResponseBody.fromJson(Map<String, dynamic> json) {
     return SearchPreferencesResponseBody(
@@ -65,6 +68,7 @@ class SearchPreference {
   /// Unique numeric ID to identify the sponsor.
   final int sponsorId;
 
+  /// Creates an instance of [SearchPreference] with the provided values.
   SearchPreference({
     required this.id,
     required this.clientId,
@@ -79,6 +83,9 @@ class SearchPreference {
   });
 
   /// Creates an instance from a JSON object.
+  ///
+  /// This factory constructor parses the JSON map and assigns the values to
+  /// the corresponding fields.
   factory SearchPreference.fromJson(Map<String, dynamic> json) {
     return SearchPreference(
       id: json['id'],

@@ -6,34 +6,33 @@ import 'package:mercado_pago_ducos/src/models/models.dart';
 /// For more information, visit:
 /// https://www.mercadopago.com.ar/developers/en/reference/preferences/_checkout_preferences/post
 class CreatePreferenceRequestBody implements RequestBody {
-  /// List of items information included in the preference.
+  /// List of items included in the preference.
   final List<Item> items;
 
-  /// Buyer’s information, including name, last name, e-mail, phone,
-  /// personal identification, address, and registration date.
+  /// Buyer’s information, such as name, last name, e-mail, phone, identification,
+  /// address, and registration date.
   final Payer? payer;
 
-  /// Configuration related to payment methods such as excluded payment methods,
+  /// Configuration related to payment methods, including excluded payment methods,
   /// excluded payment types, default payment method, and installments.
   final PaymentMethods? paymentMethods;
 
-  /// Information about shipments.
+  /// Information about shipments, including shipping mode, cost, and receiver address.
   final Shipments? shipments;
 
   /// Return URLs to the seller's site.
   ///
-  /// These URLs are used for redirection either automatically ("auto_return")
-  /// or through a 'Return to site' button depending on the payment status.
+  /// These URLs are used for automatic redirection ("auto_return") or through a
+  /// 'Return to site' button, depending on the payment status.
   /// The URL must use the "https" protocol.
   final BackUrls? backUrls;
 
   /// URL to receive notifications of events related to the payment.
   ///
-  /// The maximum length allowed is 248 characters, and the URL must use "https".
+  /// The maximum allowed length is 248 characters, and the URL must use "https".
   final String? notificationUrl;
 
-  /// A statement descriptor (up to 16 characters) that appears on the
-  /// payer's credit card statement to help identify the purchase.
+  /// A statement descriptor (up to 16 characters) that appears on the payer's credit card statement.
   final String? statementDescriptor;
 
   /// Additional information regarding the preference.
@@ -87,7 +86,7 @@ class CreatePreferenceRequestBody implements RequestBody {
 
   /// List of tracking configurations to be executed during the checkout flow.
   ///
-  /// Currently, supported tracks include Google and Facebook pixels.
+  /// Currently, supported tracks include Google Ads and Facebook pixels.
   final List<Track>? tracks;
 
   /// Additional metadata as valid JSON that can be added to the payment.
@@ -119,13 +118,14 @@ class CreatePreferenceRequestBody implements RequestBody {
 
   /// Converts the [CreatePreferenceRequestBody] instance into a JSON map.
   ///
+  /// This method serializes all properties into key/value pairs.
   /// Any key with a `null` value is removed from the resulting map.
   @override
   Map<String, dynamic> toJson() {
     return {
+      // Convert the list of items to a list of JSON maps.
       "items": items.map((item) => item.toJson()).toList(),
-      // Only include non-null fields; note that the use of the null-check operator (!)
-      // assumes that if a field is provided, it is not null.
+      // Optional fields: include them only if they are not null.
       "payer": payer?.toJson(),
       "payment_methods": paymentMethods?.toJson(),
       "shipments": shipments?.toJson(),

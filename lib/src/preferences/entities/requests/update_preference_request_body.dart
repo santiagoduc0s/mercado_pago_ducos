@@ -1,7 +1,7 @@
 import 'package:mercado_pago_ducos/src/core/client/client.dart' show RequestBody;
 import 'package:mercado_pago_ducos/src/models/models.dart';
 
-/// Request payload for creating a payment preference.
+/// Request payload for updating a payment preference.
 ///
 /// For more information, visit:
 /// https://www.mercadopago.com.ar/developers/en/reference/preferences/_checkout_preferences/post
@@ -9,7 +9,7 @@ class UpdatePreferenceRequestBody implements RequestBody {
   /// Preference Id.
   final String id;
 
-  /// List of items information included in the preference.
+  /// List of items included in the preference.
   final List<Item>? items;
 
   /// Buyer’s information, including name, last name, e-mail, phone,
@@ -26,13 +26,13 @@ class UpdatePreferenceRequestBody implements RequestBody {
   /// Return URLs to the seller's site.
   ///
   /// These URLs are used for redirection either automatically ("auto_return")
-  /// or through a 'Return to site' button depending on the payment status.
+  /// or through a 'Return to site' button, depending on the payment status.
   /// The URL must use the "https" protocol.
   final BackUrls? backUrls;
 
   /// URL to receive notifications of events related to the payment.
   ///
-  /// The maximum length allowed is 248 characters, and the URL must use "https".
+  /// The maximum allowed length is 248 characters, and the URL must use "https".
   final String? notificationUrl;
 
   /// A statement descriptor (up to 16 characters) that appears on the
@@ -98,7 +98,7 @@ class UpdatePreferenceRequestBody implements RequestBody {
 
   /// Creates an instance of [UpdatePreferenceRequestBody] with the provided values.
   ///
-  /// All fields are optional except [items], which is required.
+  /// All fields are optional except [id], which is required.
   UpdatePreferenceRequestBody({
     required this.id,
     this.items,
@@ -123,7 +123,8 @@ class UpdatePreferenceRequestBody implements RequestBody {
 
   /// Converts the [UpdatePreferenceRequestBody] instance into a JSON map.
   ///
-  /// Any key with a `null` value is removed from the resulting map.
+  /// This method serializes all properties into key/value pairs.
+  /// Any key with a `null` value is removed from the resulting map to keep the payload clean.
   @override
   Map<String, dynamic> toJson() {
     return {
