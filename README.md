@@ -4,6 +4,10 @@ Reference SDK: [Mercado Pago Developers](https://www.mercadopago.com.ar/develope
 
 This package provides a server-side implementation of the Mercado Pago API. It leverages your backend to consume the services. Complete examples are available in both the backend and example folders.
 
+https://github.com/user-attachments/assets/bd70575b-d60f-4d67-9f1e-e36eff9c75ba
+
+https://github.com/user-attachments/assets/eb7bdac2-7fce-48ac-ab5b-2598a87ce13b
+
 ### Available Services
 
 * Preferences
