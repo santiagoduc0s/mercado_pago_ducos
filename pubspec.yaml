@@ -18,3 +18,14 @@ dev_dependencies:
   flutter_lints: ^5.0.0
 
 flutter:
+
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  web:
+  windows:
+
+topics:
+  - payments
