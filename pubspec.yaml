@@ -1,6 +1,7 @@
 name: mercado_pago_ducos
 description: "Mercado Pago implementation with SDK"
 version: 0.0.1
+homepage: https://github.com/santiagoduc0s/mercado_pago_ducos
 
 environment:
   sdk: ^3.6.1
